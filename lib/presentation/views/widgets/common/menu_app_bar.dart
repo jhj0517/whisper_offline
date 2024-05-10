@@ -18,6 +18,7 @@ class MenuAppBar extends StatelessWidget implements PreferredSizeWidget {
           title,
           style: TextStyle(color: Theme.of(context).colorScheme.primary),
         ),
+        centerTitle: true,
         elevation: elevation,
         leading:  IconButton(
           icon: const Icon(Icons.menu),
