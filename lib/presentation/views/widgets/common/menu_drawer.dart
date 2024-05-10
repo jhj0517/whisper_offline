@@ -15,19 +15,21 @@ class MenuDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: _menuItems.keys.map((item) =>
-          ListTile(
-            title: Text(item),
-            onTap: () {
-              Scaffold.of(context).openEndDrawer();
-              _navigateTo(context, _menuItems[item]!);
-            },
-          ),
-        ).toList(),
-      ),
+    return SafeArea(
+      child: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: _menuItems.keys.map((item) =>
+              ListTile(
+                title: Text(item),
+                onTap: () {
+                  Scaffold.of(context).openEndDrawer();
+                  _navigateTo(context, _menuItems[item]!);
+                },
+              ),
+          ).toList(),
+        ),
+      )
     );
   }
 
