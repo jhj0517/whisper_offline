@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "appTitle": MessageLookupByLibrary.simpleMessage("Whisper Offline")
+        "about": MessageLookupByLibrary.simpleMessage("About"),
+        "appTitle": MessageLookupByLibrary.simpleMessage("Whisper Offline"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings")
       };
 }

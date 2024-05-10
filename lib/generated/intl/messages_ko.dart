@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "appTitle": MessageLookupByLibrary.simpleMessage("위스퍼 오프라인")
+        "about": MessageLookupByLibrary.simpleMessage("상세"),
+        "appTitle": MessageLookupByLibrary.simpleMessage("위스퍼 오프라인"),
+        "settings": MessageLookupByLibrary.simpleMessage("설정")
       };
 }
