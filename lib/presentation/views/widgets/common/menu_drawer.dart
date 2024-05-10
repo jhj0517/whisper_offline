@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../views.dart';
 
@@ -8,8 +9,8 @@ class MenuDrawer extends StatelessWidget {
   });
 
   final _menuItems = {
-    'About': const AboutPage(),
-    'Settings': const SettingsPage()
+    Intl.message("about"): const AboutPage(),
+    Intl.message("settings"): const SettingsPage()
   };
 
   @override
