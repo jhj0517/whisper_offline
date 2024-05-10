@@ -40,7 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: NormalAppBar(title: Intl.message("appTitle")),
+      appBar: MenuAppBar(title: Intl.message("appTitle")),
+      drawer: MenuDrawer(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
