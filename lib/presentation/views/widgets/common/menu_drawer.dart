@@ -9,7 +9,7 @@ class MenuDrawer extends StatelessWidget {
 
   final _menuItems = {
     'About': const AboutPage(),
-    'Settings': const SettingPage()
+    'Settings': const SettingsPage()
   };
 
   @override
