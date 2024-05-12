@@ -38,6 +38,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    /**
+     * Todo :
+     * - Gradio & 조카소 참조한 파일 업로드 UI
+     * - 파일업로드 UI "https://www.youtube.com/watch?v=A6nrkVYUDEo" 참조할 것
+     * ***/
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: MenuAppBar(title: Intl.message("appTitle")),
