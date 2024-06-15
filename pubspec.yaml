@@ -55,5 +55,7 @@ flutter:
   assets:
     - assets/images/
     - .env
+    - assets/whisper/
+
 flutter_intl:
   enabled: true
