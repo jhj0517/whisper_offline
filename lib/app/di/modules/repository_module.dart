@@ -5,6 +5,7 @@ final class RepositoryModule extends BaseModule {
 
   @override
   Future<void> register() async {
+    // Repository
   }
 
 }
