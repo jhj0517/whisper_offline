@@ -27,14 +27,11 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider<ThemeProvider>(
               create: (context) => ThemeProvider(
-                  prefs: locator.get<SharedPreferences>()
+                  prefs: locator<SharedPreferences>()
               )
           ),
           ChangeNotifierProvider<HomeProvider>(
-              create: (context) => HomeProvider(
-                memoRepository: locator.get<MemoRepository>(),
-                binanceRepository: locator.get<BinanceRepository>()
-              )
+              create: (context) => HomeProvider()
           ),
         ],
         child: Consumer<ThemeProvider>(

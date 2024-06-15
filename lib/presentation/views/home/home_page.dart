@@ -4,8 +4,6 @@ import 'package:intl/intl.dart';
 
 import '../../providers/providers.dart';
 import '../widgets/common/common.dart';
-import 'widgets/memo_tile.dart';
-import 'widgets/memo_input_field.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -33,7 +31,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> init() async{
-    homeProvider.readMemos();
   }
 
   @override
@@ -54,25 +51,10 @@ class _MyHomePageState extends State<MyHomePage> {
           const SizedBox(height: 20),
           OutlinedButton(
               onPressed: () async {
-                await homeProvider.fetchOrderBook(symbol: "BTCUSDT");
-                debugPrint("TEST: ${homeProvider.response!.toJson()}");
               },
-              child: const Text("DEBUG RETROFIT")
+              child: const Text("Transcribe")
           ),
           const SizedBox(height: 20),
-          const MemoInputField(),
-          Consumer<HomeProvider>(builder: (context, homeProvider, child) {
-            return Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: homeProvider.memos.length,
-                itemBuilder: (context, index) {
-                  final memo = homeProvider.memos[index];
-                  return MemoTile(memo: memo);
-                },
-              ),
-            );
-          }),
         ],
       )
     );

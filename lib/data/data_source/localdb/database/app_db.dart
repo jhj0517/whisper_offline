@@ -8,11 +8,11 @@ class AppDB {
   static String get databaseName => _databaseName;
   static const _databaseVersion = 1;
 
-  // Memo Table
-  static const memoTable = 'memos';
-  static const memoColumnId = '_id';
-  static const memoColumnContent = 'content';
-  static const memoColumnIsImportant = 'is_important';
+  // Table
+  static const exampleTable = 'memos';
+  static const exampleColumnId = '_id';
+  static const exampleColumnContent = 'content';
+  static const exampleColumnIsImportant = 'is_important';
 
   Database? _database;
   Future<Database> get database async {
@@ -32,10 +32,10 @@ class AppDB {
 
   Future<void> _onCreate(Database db, int version) async {
     await db.execute('''
-    CREATE TABLE $memoTable (
-      $memoColumnId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-      $memoColumnContent TEXT NOT NULL,
-      $memoColumnIsImportant INTEGER NOT NULL
+    CREATE TABLE $exampleTable (
+      $exampleColumnId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+      $exampleColumnContent TEXT NOT NULL,
+      $exampleColumnIsImportant INTEGER NOT NULL
     )
     ''');
   }
