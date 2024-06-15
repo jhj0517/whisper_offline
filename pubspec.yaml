@@ -37,6 +37,7 @@ dependencies:
 
   # Whisper
   whisper_dart: ^0.0.11
+  path_provider: ^2.1.3 # Temp directory
 
 dev_dependencies:
   flutter_test:
