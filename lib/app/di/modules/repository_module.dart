@@ -1,7 +1,8 @@
-import '../../data/data_source/localdb/daos/memo_dao.dart';
-import '../../data/repositories/repositories.dart';
+import 'package:whisper_offline/data/data_source/localdb/daos/memo_dao.dart';
+import 'package:whisper_offline/data/data_source/network/binance/binance_client.dart';
+import 'package:whisper_offline/data/repositories/binance_repository.dart';
+import 'package:whisper_offline/data/repositories/memo_repository.dart';
 import '../dependency_injection.dart';
-import '../../data/data_source/network/binance/binance_client.dart';
 import 'base_module.dart';
 
 final class RepositoryModule extends BaseModule {
