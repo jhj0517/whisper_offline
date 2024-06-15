@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:whisper_offline/app/style/theme/dark_theme_attrs.dart';
 import 'package:whisper_offline/app/style/theme/light_theme_attrs.dart';
 import 'package:whisper_offline/app/style/theme/theme_attrs.dart';
-import '../../constants/app_constants.dart';
+import 'package:whisper_offline/core/constants/app_constants.dart';
 
 class ThemeProvider extends ChangeNotifier {
 
