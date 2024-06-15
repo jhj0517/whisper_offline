@@ -4,7 +4,7 @@ import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/services.dart';
 
-class AssetLoader{
+class FileManager{
 
   static Future<File> getFileFromAssets(String filePath) async {
     final Directory tempDir = await getTemporaryDirectory();
