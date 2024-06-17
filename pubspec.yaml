@@ -41,6 +41,7 @@ dependencies:
 
   # Audio File
   file_picker: ^8.0.5
+  just_audio: ^0.9.38
   flutter_ffmpeg: ^0.4.2
 
 dev_dependencies:
