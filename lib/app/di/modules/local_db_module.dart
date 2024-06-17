@@ -10,13 +10,13 @@ final class LocalDBModule extends BaseModule {
   @override
   Future<void> register() async {
     // SQLite
-    locator.registerLazySingleton<AppDB>(() => AppDB());
+    sl.registerLazySingleton<AppDB>(() => AppDB());
     // SharedPreference
-    locator.registerLazySingletonAsync<SharedPreferences>(() async => SharedPreferences.getInstance());
-    await locator.isReady<SharedPreferences>();
+    sl.registerLazySingletonAsync<SharedPreferences>(() async => SharedPreferences.getInstance());
+    await sl.isReady<SharedPreferences>();
     // DotEnv
     await dotenv.load(fileName: ".env");
-    locator.registerLazySingleton<DotEnv>(() => dotenv);
+    sl.registerLazySingleton<DotEnv>(() => dotenv);
   }
 
 }

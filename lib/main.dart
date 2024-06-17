@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider<ThemeProvider>(
               create: (context) => ThemeProvider(
-                  prefs: locator<SharedPreferences>()
+                  prefs: sl<SharedPreferences>()
               )
           ),
           ChangeNotifierProvider<HomeProvider>(

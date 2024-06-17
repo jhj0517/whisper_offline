@@ -4,7 +4,7 @@ import 'package:whisper_offline/app/di/modules/whisper_module.dart';
 import 'modules/local_db_module.dart';
 import 'modules/repository_module.dart';
 
-final locator = GetIt.I;
+final sl = GetIt.I;
 
 final class DependencyInjection{
 
