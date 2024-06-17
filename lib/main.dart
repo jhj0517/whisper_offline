@@ -3,6 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:whisper_offline/core/services/whisper_downloader.dart';
+import 'package:whisper_offline/core/services/whisper_inferencer.dart';
 
 import 'generated/l10n.dart';
 import 'presentation/views/views.dart';
@@ -31,7 +33,10 @@ class MyApp extends StatelessWidget {
               )
           ),
           ChangeNotifierProvider<HomeProvider>(
-              create: (context) => HomeProvider()
+              create: (context) => HomeProvider(
+                modelDownloader: sl<WhisperDownloader>(),
+                whisperInf: sl<WhisperInferencer>()
+              )
           ),
         ],
         child: Consumer<ThemeProvider>(
