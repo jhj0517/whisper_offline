@@ -1,24 +1,28 @@
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:file_picker/file_picker.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/services.dart';
 
 class FileManager{
 
-  static Future<File> getFileFromAssets(String filePath) async {
-    final Directory tempDir = await getTemporaryDirectory();
-    final String tempPath = tempDir.path;
-    final String tempFilePath = path.join(tempPath, filePath);
-    final file = File(tempFilePath);
-    if (file.existsSync()) {
-      return file;
-    } else {
-      final ByteData byteData = await rootBundle.load(path.join("assets", filePath));
-      final ByteBuffer buffer = byteData.buffer;
-      await file.create(recursive: true);
-      return file.writeAsBytes(buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+  static Future<String?> pickAudioFile() async {
+    final audioExtensions = [
+      'mp3', 'wav', 'aac', 'flac', 'alac', 'ogg', 'm4a', 'wma', 'aiff'
+    ];
+    final videoExtensions = [
+      'mp4', 'avi', 'mov', 'wmv', 'flv', 'mkv', 'webm', 'mpeg', '3gp'
+    ];
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: [...audioExtensions, ...videoExtensions],
+    );
+
+    if (result != null && result.files.single.path != null) {
+      return result.files.single.path;
     }
+    return null;
   }
 
 }
