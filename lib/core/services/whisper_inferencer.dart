@@ -2,7 +2,6 @@ import "dart:io";
 import "package:flutter/material.dart";
 import "package:path_provider/path_provider.dart";
 import 'package:flutter_ffmpeg/flutter_ffmpeg.dart';
-import 'package:whisper_flutter_new/download_model.dart';
 import 'package:whisper_flutter_new/whisper_flutter_new.dart';
 import 'package:path/path.dart' as path;
 
@@ -13,6 +12,7 @@ class WhisperInferencer{
     this.modelDir,
   });
 
+  final defaultModel = WhisperModel.base;
   final FlutterFFmpeg ffmpeg = FlutterFFmpeg();
   final availableModels = WhisperModel.values.map((model) => model.modelName).toList();
   String? modelDir;
@@ -25,27 +25,27 @@ class WhisperInferencer{
       modelDir = path.join(tempDir.path, "whisper_offline", "models");
     }
 
-    modelType ??= WhisperModel.largeV2;
+    modelType ??= defaultModel;
 
     _initModel(newModelType: modelType!);
   }
 
   Future<String> transcribe({
     required String filePath,
-    WhisperModel modelType=WhisperModel.largeV2,
+    required WhisperModel modelType,
     bool isTranslate=false,
     bool isNoTimestamps=false,
   }) async {
     _initModel(newModelType: modelType);
     
-    final preprocessedFilePath = await _preProcess(filePath: filePath);
-    if (preprocessedFilePath==null){
+    final preprocessedAudio = await _preProcessAudio(filePath: filePath);
+    if (preprocessedAudio==null){
       throw("Error pre-process input File");
     }
 
     final WhisperTranscribeResponse transcription = await model!.transcribe(
       transcribeRequest: TranscribeRequest(
-        audio: preprocessedFilePath,
+        audio: preprocessedAudio,
         isTranslate: false,
         isNoTimestamps: false,
         splitOnWord: false,
@@ -69,7 +69,7 @@ class WhisperInferencer{
     }
   }
 
-  Future<String?> _preProcess({
+  Future<String?> _preProcessAudio({
     required String filePath,
   }) async {
     String tempDir = (await getTemporaryDirectory()).path;
