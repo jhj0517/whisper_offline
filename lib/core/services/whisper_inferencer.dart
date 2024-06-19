@@ -55,9 +55,9 @@ class WhisperInferencer{
       ),
     );
     final endTime = DateTime.now();
-    final elapsedTime = endTime.difference(startTime).inSeconds;
+    final elapsedTime = endTime.difference(startTime).inMilliseconds;
 
-    return "${transcription.toJson()}\nTook $elapsedTime seconds.";
+    return "${transcription.toJson()}\n\nTook $elapsedTime ms.";
   }
 
   void _initModel({
