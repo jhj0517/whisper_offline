@@ -36,6 +36,7 @@ class WhisperInferencer{
     bool isTranslate=false,
     bool isNoTimestamps=false,
   }) async {
+    final startTime = DateTime.now();
     _initModel(newModelType: modelType);
     
     final preprocessedAudio = await _preProcessAudio(filePath: filePath);
@@ -53,8 +54,10 @@ class WhisperInferencer{
         diarize: false
       ),
     );
+    final endTime = DateTime.now();
+    final elapsedTime = endTime.difference(startTime).inSeconds;
 
-    return "${transcription.toJson()}";
+    return "${transcription.toJson()}\nTook $elapsedTime seconds.";
   }
 
   void _initModel({
