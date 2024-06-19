@@ -5,6 +5,11 @@ import 'package:whisper_offline/core/services/file_manager.dart';
 import 'package:whisper_offline/core/services/whisper_downloader.dart';
 import 'package:whisper_offline/core/services/whisper_inferencer.dart';
 
+enum TranscriptionState{
+  transcribing,
+  modelDownloading,
+  done
+}
 
 class HomeProvider extends ChangeNotifier {
 
@@ -25,27 +30,32 @@ class HomeProvider extends ChangeNotifier {
   String? _transcription;
   String? get transcription => _transcription;
 
+  TranscriptionState _transcriptionState=TranscriptionState.done;
+  TranscriptionState get transcriptionState => _transcriptionState;
+
   double? _downloadProgress;
   double? get downloadProgress => _downloadProgress;
 
   Future<void> transcribe() async {
+
     if (audioPath==null){
       throw("Error : No audio file");
     }
 
     if (!await modelDownloader.isModelExist(modelType: selectedModel)){
-      modelDownloader.downloadModel(
+      _setTranscriptionState(TranscriptionState.modelDownloading);
+      await modelDownloader.downloadModel(
         modelType: selectedModel,
         onProgress:  (progress) => _onDownloadProgress(progress)
       );
     }
 
+    _setTranscriptionState(TranscriptionState.transcribing);
     _transcription = await whisperInf.transcribe(
       filePath: audioPath!,
       modelType: selectedModel
     );
-    debugPrint("result: ${_transcription}");
-    notifyListeners();
+    _setTranscriptionState(TranscriptionState.done);
   }
 
   Future<void> pickAudioFile() async {
@@ -59,6 +69,11 @@ class HomeProvider extends ChangeNotifier {
 
   void setModel(WhisperModel newModel){
     _selectedModel = newModel;
+    notifyListeners();
+  }
+
+  void _setTranscriptionState(TranscriptionState state){
+    _transcriptionState = state;
     notifyListeners();
   }
 

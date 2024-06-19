@@ -12,14 +12,23 @@ class TranscriptionResult extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     final result = context.select<HomeProvider, String?>((provider) => provider.transcription);
-    if (result==null){
-      return const Text("");
+    final state = context.select<HomeProvider, TranscriptionState>((provider) => provider.transcriptionState);
+
+    if (state==TranscriptionState.transcribing){
+      return const Center(
+          child: CircularProgressIndicator()
+      );
     }
+
+    if (state==TranscriptionState.modelDownloading){
+      return const SizedBox.shrink();
+    }
+
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: SingleChildScrollView(
-          child: Text(result),
+          child: Text(result.toString()),
         )
       )
     );
