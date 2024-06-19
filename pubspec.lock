@@ -885,11 +885,12 @@ packages:
   whisper_flutter_new:
     dependency: "direct main"
     description:
-      name: whisper_flutter_new
-      sha256: "8abddd071f9a55d6b349742a45d9ea22f1dd8a3b920ddaccbe12317527a091da"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.0"
+      path: "."
+      ref: "fix/cmake-compile"
+      resolved-ref: "1bac795322848cd3ec958e76a7acb55faf83f622"
+      url: "https://github.com/jhj0517/whisper_flutter_new"
+    source: git
+    version: "1.0.1"
   win32:
     dependency: transitive
     description:
@@ -916,4 +917,4 @@ packages:
     version: "3.1.2"
 sdks:
   dart: ">=3.3.2 <4.0.0"
-  flutter: ">=3.19.0"
+  flutter: ">=3.22.0"
