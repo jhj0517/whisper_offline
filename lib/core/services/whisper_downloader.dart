@@ -29,6 +29,10 @@ class WhisperDownloader {
       modelDir = path.join(tempDir.path, "whisper_offline", "models");
     }
 
+    if (!Directory(modelDir).existsSync()){
+      Directory(modelDir).createSync(recursive: true);
+    }
+
     if (await isModelExist(modelType: modelType, modelDir: modelDir)){
       return path.join(modelDir, "ggml-${modelType.modelName}.bin");
     }
