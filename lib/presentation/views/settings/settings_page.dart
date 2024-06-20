@@ -30,10 +30,10 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: NormalAppBar(title: Intl.message("settings"), enableBackButton: true),
         body: Center(
-          child: Text("setting"),
+          child: Text("setting page"),
         )
     );
   }

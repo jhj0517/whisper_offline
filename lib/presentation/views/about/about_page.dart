@@ -30,10 +30,10 @@ class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: NormalAppBar(title: Intl.message("about"), enableBackButton: true),
         body: Center(
-          child: Text("about"),
+          child: Text("about page"),
         )
     );
   }
