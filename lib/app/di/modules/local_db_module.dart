@@ -14,9 +14,6 @@ final class LocalDBModule extends BaseModule {
     // SharedPreference
     sl.registerLazySingletonAsync<SharedPreferences>(() async => SharedPreferences.getInstance());
     await sl.isReady<SharedPreferences>();
-    // DotEnv
-    await dotenv.load(fileName: ".env");
-    sl.registerLazySingleton<DotEnv>(() => dotenv);
   }
 
 }
